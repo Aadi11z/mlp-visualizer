@@ -1,0 +1,11 @@
+[package]
+name = "nn-vis"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+rand = "0.9.2"
+
+[[bin]]
+name = "nn-vis"
+path = "src/main.rs"
