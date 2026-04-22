@@ -10,10 +10,10 @@ fi
 
 cleanup() {
   echo ""
-  echo "shutting down..."
+  echo "Terminating..."
   kill "$RUST_PID" "$PYTHON_PID" "$VITE_PID" 2>/dev/null
   wait "$RUST_PID" "$PYTHON_PID" "$VITE_PID" 2>/dev/null
-  echo "done."
+  echo "Execution Halted."
 }
 trap cleanup INT TERM
 
@@ -22,7 +22,7 @@ echo "▶ starting Rust MLP server..."
 cd "$ROOT/src-tauri"
 cargo build --release -q
 ./target/release/mlp-server &
-RUST_PID=$!
+RUST_PID=$! # PID of the last background process
 
 # Wait for Rust to be ready
 echo "  waiting for :9000..."
