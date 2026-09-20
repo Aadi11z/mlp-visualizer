@@ -16,9 +16,21 @@ impl Activation {
         match self {
             Activation::Identity => x,
             Activation::Sigmoid => 1.0 / (1.0 + (-x).exp()),
-            Activation::ReLU => if x > 0.0 { x } else { 0.0 },
+            Activation::ReLU => {
+                if x > 0.0 {
+                    x
+                } else {
+                    0.0
+                }
+            }
             Activation::Tanh => x.tanh(),
-            Activation::Step => if x >= 0.0 { 1.0 } else { 0.0 },
+            Activation::Step => {
+                if x >= 0.0 {
+                    1.0
+                } else {
+                    0.0
+                }
+            }
         }
     }
 
@@ -29,9 +41,15 @@ impl Activation {
                 let s = 1.0 / (1.0 + (-x).exp());
                 s * (1.0 - s)
             }
-            Activation::ReLU => if x > 0.0 { 1.0 } else { 0.0 },
+            Activation::ReLU => {
+                if x > 0.0 {
+                    1.0
+                } else {
+                    0.0
+                }
+            }
             Activation::Tanh => 1.0 - x.tanh().powi(2),
-            Activation::Step => 0.0, 
+            Activation::Step => 0.0,
         }
     }
 }
